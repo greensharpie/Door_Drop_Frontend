@@ -7,6 +7,7 @@ import { CheckSession } from './services/Auth'
 import NavBar from './components/NavBar'
 import Home from './pages/Home'
 import Register from './pages/Register'
+import Login from './pages/Login'
 
 function App() {
   const [authenticated, toggleAuthenticated] = useState(false)
@@ -44,6 +45,15 @@ function App() {
       <main>
         <Routes>
           <Route path="/register" element={<Register />} />
+          <Route
+            path="/login"
+            element={
+              <Login
+                setUser={setCustomer}
+                toggleAuthenticated={toggleAuthenticated}
+              />
+            }
+          />
           <Route
             path="/"
             element={<Home customer={customer} authenticated={authenticated} />}
