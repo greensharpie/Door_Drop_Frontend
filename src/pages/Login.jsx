@@ -15,6 +15,7 @@ const Login = ({toggleAuthenticated, setCustomer}) => {
     e.preventDefault()
     const payload = await SignInCustomer(formValues)
     setFormValues({email: '', password: ''})
+    console.log('test3', payload)
     setCustomer(payload)
     toggleAuthenticated(true)
     navigate('/')
@@ -29,7 +30,7 @@ const Login = ({toggleAuthenticated, setCustomer}) => {
             <input
               onChange={handleChange}
               name="email"
-              type="email"
+              type="text"
               placeholder="email@email.com"
               value={formValues.email}
               required

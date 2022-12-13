@@ -8,6 +8,7 @@ import NavBar from './components/NavBar'
 import Home from './pages/Home'
 import Register from './pages/Register'
 import Login from './pages/Login'
+import Favorites from './components/Favorites'
 
 function App() {
   const [authenticated, toggleAuthenticated] = useState(false)
@@ -49,7 +50,7 @@ function App() {
             path="/login"
             element={
               <Login
-                setUser={setCustomer}
+                setCustomer={setCustomer}
                 toggleAuthenticated={toggleAuthenticated}
               />
             }
@@ -58,6 +59,7 @@ function App() {
             path="/"
             element={<Home customer={customer} authenticated={authenticated} />}
           />
+          <Route path="favorite/:userId" element={<Favorites />} />
         </Routes>
       </main>
     </div>

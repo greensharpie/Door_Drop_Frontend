@@ -9,6 +9,7 @@ const Register = () => {
     const initialState = {
       firstName: '',
       lastName: '',
+      address: '',
       email: '',
       password:'',
       confirmPassword: ''
@@ -29,6 +30,7 @@ const Register = () => {
       const res = await RegisterCustomer({
         firstName: formValues.firstName,
         lastName: formValues.lastName,
+        address: formValues.address,
         email: formValues.email,
         password: formValues.password
       })
@@ -42,7 +44,7 @@ const Register = () => {
   return (
     <div>Register
       <form className="Register-form" onSubmit={handleSubmit}>
-        {/* Full name */}
+        {/*  Name */}
         <section className="Name">                     
             <label className="firstName" htmlFor='firstName'>First Name:</label>
             
@@ -65,6 +67,19 @@ const Register = () => {
                 type="text"
                 placeholder="Last Name"
                 value={formValues.lastName}
+                required
+            />
+        </section>
+
+        <section className="address">                     
+            <label className="address" htmlFor='address'>Street Name, City, State</label>
+            
+            <input
+                onChange={handleChange}
+                name="address"
+                type="text"
+                placeholder="123 Street, Charlotte, NC"
+                value={formValues.address}
                 required
             />
         </section>
