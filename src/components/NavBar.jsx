@@ -3,45 +3,86 @@ const NavBar = ({authenticated, customer, handleLogOut}) => {
   let authenticatedOptions
   if (customer) {
     authenticatedOptions = (
-      <label className="navbar-default" id='navbar-default'>
-          <input type="checkbox" className='menu_toggle'></input>
-          <ul className='list'>
-              <li>
-              <a href="/" className="Home">Home</a>
-              </li>
-              <li>
-              <a href={`/favorite/${customer.id}`} >Favorites</a>
-              </li>
-              <li>
-              <a href={`/cart/${customer.id}`}>Cart</a>
-              </li>
-              <li>
-              <a onClick={handleLogOut} href="/">Sign Out</a>
-              </li>
-          </ul>
-      </label>
-
+        <nav className="navbar navbar-expand-lg bg-light">
+<div className="container-fluid">
+    <a className="navbar-brand" href="#">Door Drop</a>
+    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span className="navbar-toggler-icon"></span>
+    </button>
+    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+        <li className="nav-item">
+        <a className="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li className="nav-item">
+        <a className="nav-link" href={`/favorite/${customer.id}`}>Favorites</a>
+        </li>
+        <li className="nav-item">
+        <a className="nav-link" href={`/order/${customer.id}`}>Order</a>
+        </li>
+        <li className="nav-item dropdown">
+        <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+        </a>
+        <ul className="dropdown-menu">
+            <li><a className="dropdown-item" onClick={handleLogOut} href="/">Log Out</a></li>
+            <li className="nav-item">
+        <a className="nav-link" href='/register'>Register</a>
+        </li>
+        </ul>
+        </li>
+    </ul>
+    <form className="d-flex" role="search">
+        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+        <button className="btn btn-outline-success" type="submit">Search</button>
+    </form>
+    </div>
+</div>
+</nav>
     )
-  }
-  const publicOptions = (
-      <ul className="navbar-nav">
-          <li>
-          <a href='/login'> Login </a>
-          <a href='/register'> Register</a>
-          </li>
-      </ul>
-  )
+}
+const publicOptions = (
+    <div>
+    <nav className="navbar navbar-expand-lg bg-light">
+<div className="container-fluid">
+    <a className="navbar-brand" href="#">Door Drop</a>
+    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span className="navbar-toggler-icon"></span>
+    </button>
+    <div className="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+        <li className="nav-item">
+        <a className="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li className="nav-item">
+        <a className="nav-link" href='/login'>Login</a>
+        </li>
+        <li className="nav-item">
+        <a className="nav-link" href='/register'>Register</a>
+        </li>
+        <li className="nav-item">
+        <a className="nav-link" onClick={handleLogOut} href="/">Logout</a>
+        </li>
+        <li className="nav-item">
+        <a className="nav-link disabled">Disabled</a>
+        </li>
+    </ul>
+    <form className="d-flex" role="search">
+        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+        <button className="btn btn-outline-success" type="submit">Search</button>
+    </form>
+    </div>
+</div>
+</nav>
+</div>
 
-  return (   
-  <nav className="nav-bar">
-      <div className="nav-container">
-          <a href="/">
-              <span>Door Drop</span>
-          </a>
-              {authenticated && customer ? authenticatedOptions : publicOptions}
-      </div>
-  </nav>
+)
 
+return (   
+    <div>
+    <nav className="nav-background"> 
+        {authenticated && customer ? authenticatedOptions : publicOptions}
+        </nav>
+    </div>
 )
 }
 

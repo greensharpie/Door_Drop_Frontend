@@ -3,7 +3,7 @@ import axios from 'axios'
 import { useState, useEffect } from 'react' 
 import { useParams } from 'react-router-dom'
 import { BASE_URL } from '../globals'
-import e from 'express'
+
 
 const Order = () => {
 
@@ -20,7 +20,7 @@ const Order = () => {
       setOrderItems(res.data.order_items) 
     }
     GetItems()
-  }, [userId])
+  }, [customerId])
 
   const handleDelete = async (e) => {
     let itemId= e

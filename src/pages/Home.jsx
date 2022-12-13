@@ -22,44 +22,60 @@ const Home = ({customer, authenticated}) => {
     // }
     GetAllRest()
   }, [])
-  return (
-    <div>Home
-      <section className='user-restaurants'> 
-                    <h1 className='text-4xl font-1-bold pb-6 pt-20'>Your Restaurants</h1>
-                    <div className='trending-container'>
-                      {restaurantList.map((restaurant) => (
-                        <Link to={`/restaurant/${restaurant?.id}`} key={restaurant.id}>
-                                <img src={restaurant.image} alt={restaurant.name} className="restaurant-img" />
-                                <h5 className='fav-rest-name'>{restaurant.name}</h5>     
-                            </Link>
-                      ))}
-                            
-                    </div>
-                </section>
+
+  return customer && authenticated ? ( 
+
+    <div className="vstack gap-3">
+      {restaurantList.map((restaurant)=> (
+        <div className="res-card" key={restaurant?.id}>
+        <h2 key={restaurant?.id}>{restaurant.name}</h2>
+        <div>
+          <img src={restaurant?.image} className="card-img-top" alt={restaurant?.name}/>
+          <div className="card-body">
+    <h5 className="card-title">{restaurant?.name}</h5>
+    <p className="card-text">{restaurant?.description}.</p>
+    <Link to={`/restaurant/${restaurant?.id}`} className="btn btn-primary">Go Restaurant</Link>
     </div>
-  ) 
+          </div>
+        </div>
+      ))}
+    </div>
+  ) : (
+          <div className='not-logged-in'>
+        <h3>You must be logged in!</h3>
+        <button onClick={()=> navigate('/login')}>Login</button>
+      </div>
+  )
+  
+  
+  
   
 }
+
 
 export default Home
 
 
-// return customer && authenticated ? (
-//   <div>Home
-//     <section className='user-restaurants'> 
-//                   <h1 className='text-4xl font-1-bold pb-6 pt-20'>You're restaurant Restaurants</h1>
-//                   <div className='trending-container'>
-//                           <Link to={`/customer_id/${customer?.id}/restaurant/${restaurant.id}`} key={restaurant.id}>
-//                               <img src={restaurant.image} alt={restaurant.name} className="restaurant-img" />
-//                               <h5 className='fav-rest-name'>{restaurant.name}</h5>     
-//                           </Link>
-//                   </div>
-//               </section>
-//   </div>
-// ) 
-// : (
+
+//   customer && authenticated ?(
+// <div>
 //   <div>
-//     <h3> Log in to gain access! </h3>
-//   </div>
-// )
-// }
+//     {restaurantList?.map((restaurant) => (
+//       <div className="card" style="width: 18rem;" key={restaurant?.id}>
+//   <img src={restaurant?.image} className="card-img-top" alt={restaurant?.name}/>
+//   <div className="card-body">
+//     <h5 className="card-title">{restaurant?.name}</h5>
+//     <p className="card-text">{restaurant?.description}.</p>
+//     <Link to={`/restaurant/${restaurant?.id}`} className="btn btn-primary">Go Restaurant</Link>
+//    </div>
+//  </div>
+//     ))}
+//     </div>
+//     </div>
+//   )
+//     : (
+//       <div className='not-logged-in'>
+//         <h3>You must be logged in!</h3>
+//         <button onClick={()=> navigate('/login')}>Login</button>
+//       </div>
+//     )

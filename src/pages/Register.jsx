@@ -35,107 +35,92 @@ const Register = () => {
         password: formValues.password
       })
       setCustomerData(res.id)
-      console.log('test1', res.id)
       await axios.post(`http://localhost:3001/api/orders/customer_id/${res.id}`)
 
       setFormValues(initialState)
       navigate('/login')
     }
   return (
-    <div>Register
-      <form className="Register-form" onSubmit={handleSubmit}>
-        {/*  Name */}
-        <section className="Name">                     
-            <label className="firstName" htmlFor='firstName'>First Name:</label>
-            
-            <input
-                onChange={handleChange}
-                name="firstName"
-                type="text"
-                placeholder="First Name"
-                value={formValues.firstName}
-                required
-            />
-        </section>
-
-        <section className="Name">                     
-            <label className="lastName" htmlFor='lastName'>Last Name:</label>
-            
-            <input
-                onChange={handleChange}
-                name="lastName"
-                type="text"
-                placeholder="Last Name"
-                value={formValues.lastName}
-                required
-            />
-        </section>
-
-        <section className="address">                     
-            <label className="address" htmlFor='address'>Street Name, City, State</label>
-            
-            <input
-                onChange={handleChange}
-                name="address"
-                type="text"
-                placeholder="123 Street, Charlotte, NC"
-                value={formValues.address}
-                required
-            />
-        </section>
-        
-        {/* Email */}
-        <section className="email">          
-            <label className="email" htmlFor='email'>email</label>           
-            <input
-                onChange={handleChange}
-                name="email"
-                type="text"
-                placeholder="email"
-                value={formValues.email}
-                required
-            />           
-        </section>
-        
-        {/* password inputs */}
-        <section className="password">           
-            <label className="password" htmlFor='password'>Password</label>         
-            <input
-                onChange={handleChange}
-                name="password"
-                type="password"
-                placeholder="Password"
-                value={formValues.password}
-                required
-            />
-            {/* confirm password */}
-            <label className="confirmPassword" htmlFor='confirmPassword'>Confirm Password</label>
-            <input
-                onChange={handleChange}
-                type="password"
-                name="confirmPassword"
-                placeholder="Confirm Password"
-                value={formValues.confirmPassword}
-                required
-            />
-        </section>
-
-        <div className="submit-button-container">
-            <button
-            type="submit"
-            className="submit-btn"
-            disabled={
-                !formValues.email ||
-                (!formValues.password &&
-                formValues.confirmPassword === formValues.password)
-            }
-            >
-            Submit
-            </button>
-        </div>
-        </form>
+    
+    <div className="row justify-content-center">
+    <div className="col-md-6 col-sm-12 no-padding ">
+    <div className="register-form">
+<form  onSubmit={handleSubmit}>
+      <div className="col-md-6">
+    <label htmlFor="firstName" className="form-label">First Name</label>
+    <input 
+    onChange={handleChange}
+    name = 'firstName'
+    type="text" 
+    value={formValues.firstName}
+    className="form-control" 
+    id="inputEmail4" 
+    required
+    />
+  </div>
+  <div className="col-md-6">
+    <label htmlFor="lastName" className="form-label">Last Name</label>
+    <input 
+    onChange={handleChange}
+    type="text"
+    name="lastName"
+    value={formValues.lastName}
+    required
+    className="form-control" 
+    id="inputPassword4"
+    />
+  </div>
+  <div className="col-md-6">
+    <label htmlFor="email" className="form-label">Email</label>
+    <input 
+    onChange={handleChange}
+    name = 'email'
+    type="text" 
+    value={formValues.email}
+    className="form-control" 
+    id="inputEmail4" 
+    required
+    />
+  </div>
+  <div className="col-md-6">
+    <label htmlFor="inputPassword4" className="form-label">Password</label>
+    <input 
+    onChange={handleChange}
+    type="password"
+    name="password"
+    value={formValues.password}
+    required
+    className="form-control" 
+    id="inputPassword4"
+    />
+  </div>
+  <div className="col-md-6">
+    <label htmlFor="address" className="form-label">Address</label>
+    <input 
+    onChange={handleChange}
+    type="text"
+    name="address"
+    value={formValues.address}
+    required
+    className="form-control" 
+    id="inputAddress" 
+    placeholder="1234 Main St, Lincolnton, NC"
+    />
+  </div>
+  <div className="col-6">
+    <button 
+    type="submit" 
+    disabled={
+      !formValues.email ||
+      (!formValues.password &&
+      formValues.confirmPassword === formValues.password)
+  }
+    className="btn btn-primary">Register</button>
+  </div>
+</form>
+</div>
+</div>
     </div>
-
   )
 }
 

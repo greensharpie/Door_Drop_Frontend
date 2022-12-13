@@ -10,6 +10,7 @@ import Register from './pages/Register'
 import Login from './pages/Login'
 import Favorites from './components/Favorites'
 import Restaurant from './pages/Restaurant'
+import Order from './pages/Order'
 
 function App() {
   const [authenticated, toggleAuthenticated] = useState(false)
@@ -65,6 +66,10 @@ function App() {
             element={<Restaurant customer={customer} />}
           />
           <Route path="favorite/:userId" element={<Favorites />} />
+          <Route
+            path="order/:customerId"
+            element={<Order customer={customer} />}
+          />
         </Routes>
       </main>
     </div>
