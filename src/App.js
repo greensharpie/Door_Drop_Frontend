@@ -9,6 +9,7 @@ import Home from './pages/Home'
 import Register from './pages/Register'
 import Login from './pages/Login'
 import Favorites from './components/Favorites'
+import Restaurant from './pages/Restaurant'
 
 function App() {
   const [authenticated, toggleAuthenticated] = useState(false)
@@ -58,6 +59,10 @@ function App() {
           <Route
             path="/"
             element={<Home customer={customer} authenticated={authenticated} />}
+          />
+          <Route
+            path="/customer_id/:customerId/restaurant/:restaurantId"
+            element={<Restaurant customer={customer} />}
           />
           <Route path="favorite/:userId" element={<Favorites />} />
         </Routes>
