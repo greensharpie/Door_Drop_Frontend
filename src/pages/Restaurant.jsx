@@ -9,27 +9,27 @@ const Restaurant = ({customer}) => {
   let {customerId, restaurantId} = useParams()
   const [restaurant, setRestaurant] = useState([])
   const [orderId, setOrderId] = useState([])
+
   
   useEffect(() => {
+
     const GetOrdersWithItems = async () => {
       const res = await axios.get(`${BASE_URL}/restaurants/id/${restaurantId}`)
       setRestaurant(res.data)
+      console.log('test', res.data)
     }
-
-    // const GetOrderById = async () => {
-    //   const res = await axios.get(`${BASE_URL}/orders/order_items/id/${customerId}`)
-    //   setOrderId(res.data)
-    //   console.log('order by id', res.data)
-    // }
-
+    const GetOrderById = async () => {
+      const res = await axios.get(`${BASE_URL}/orders/order_items/id/${customer.id}`)
+      setOrderId(res.data)
+      console.log('wow', res.data)
+    }
     GetOrdersWithItems()
-    // GetOrderById()
+    GetOrderById()
     
-  }, [restaurantId, customerId])
-
-
+  }, [restaurantId ])
+  
   const favOption = document.getElementById('addedFav')  
-
+  
   const toggleFavorite = async () => {
     if(favOption.innerHTML === "Remove From Favorites"){
       await axios.delete(`${BASE_URL}/favorites/customer_id/${customer.id}/restaurant_id/${restaurantId}`)
@@ -39,20 +39,15 @@ const Restaurant = ({customer}) => {
       favOption.innerHTML = "Remove From Favorites"
     }
   }
-
-  // const toggleOrder = async () => {
-  //   let itemId = e
-  //   await axios.post(`${BASE_URL}/orders/add_order_item/order_id/${orderId.id}/restaurant_id/${restaurantId}/item_id/${itemId.id}`)
-  //   alert(`${itemId.name} was added to your order`)
-
-  //   if(favOption.innerText === "Remove From Favorites"){
-  //     await axios.delete(`${BASE_URL}/favorites/user_id/${customerId}/restaurant_id/${restaurantId}`)
-  //     alert(`${itemId.name} was deleted from your favorites`)
-  //   } else if(favOption.innerText === "Remove From Favorite"){
-  //     await axios.post(`${BASE_URL}/orders/add_order_item/order_id/${orderId.id}/restaurant_id/${restaurantId}/item_id/${itemId.id}`)
-  //     alert(`${itemId.name} was added to your favorites`)
-  //   }
-  // }
+  console.log('order', orderId)
+  
+  const toggleOrder = async (e, item) => {
+    let itemId = e
+    console.log('item3', item)
+    await axios.post(`${BASE_URL}/orders/add_order_item/order_id/${item.orderId}/restaurant_id/${restaurantId}/item_id/${item.id}`)
+    alert(`${item.name} was added to your order`)
+    console.log('item1', itemId)
+  }
 
   return (
     <div key={restaurant.id}>Restaurant
@@ -70,12 +65,15 @@ const Restaurant = ({customer}) => {
     <div>
       <h2>Menu Items</h2>
       {restaurant.restaurant_items?.map((item)=>(
+        
         <div  key={item.id}>
         <div className="row">
+          {console.log('item2', item)}
   <div className="col-2">
     <nav id="navbar-example1" className="h-100 flex-column align-items-stretch pe-4 border-end">
       <nav className="nav nav-pills flex-column">
         <a className="nav-link" href="#item-1">{item.name}</a>
+        <button onClick={(e) => toggleOrder(e, item)}>Add To Order</button>
       </nav>
     </nav>
   </div>
@@ -92,15 +90,6 @@ const Restaurant = ({customer}) => {
 </div>
         </div>
       ))}
-      
-      {/* {restaurant.restaurant_items?.map((item) => {
-        <div classNameName='item-container' key={item.id}>
-          <h3>{item?.name}</h3>
-          <img src = {item?.image} alt={item?.name}/>
-          <p>{item?.name}</p>
-          <button onClick={()=> toggleOrder(item)} id='order-option'>Add to Order </button>
-        </div>
-      })} */}
     </div>
     </div>
   )

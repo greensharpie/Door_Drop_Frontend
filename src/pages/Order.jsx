@@ -5,19 +5,20 @@ import { useParams } from 'react-router-dom'
 import { BASE_URL } from '../globals'
 
 
-const Order = () => {
+const Order = ({customer}) => {
 
   let {customerId} = useParams()
 
   const [orderItems, setOrderItems] = useState([])
 
-  const handleRefresh = () => {
-    window.location.reload(false)
-  }
+  // const handleRefresh = () => {
+  //   window.location.reload(false)
+  // }
   useEffect(() => {
     const GetItems = async() => {
       const res = await axios.get(`${BASE_URL}/orders/order_items/id/${customerId}`)
-      setOrderItems(res.data.order_items) 
+      setOrderItems(res.data.orderItems) 
+      console.log('orderitems', res.data)
     }
     GetItems()
   }, [customerId])
@@ -25,17 +26,19 @@ const Order = () => {
   const handleDelete = async (e) => {
     let itemId= e
     await axios.delete(`${BASE_URL}/orders/item_id/${itemId}`)
-    handleRefresh()
+    // handleRefresh()
   }
 
   return (
     <div>Order
-      {orderItems.map((item) => (
-        <><div className='order-container' key={item.id}>
-          <h2>{item.name}</h2>
+      <div>
+      {orderItems?.map((item)=>(
+        <div>
+          <h2 key={item.id}>{item?.name}</h2>
           <button onClick={() => handleDelete(item.id)} className='delete-item-btn'>Remove From Order</button>
-        </div><img className='order-image' src={item.image} alt={item.image} /></>
+        </div>
       ))}
+      </div>
     </div>
   )
 }
