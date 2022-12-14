@@ -8,7 +8,7 @@ import NavBar from './components/NavBar'
 import Home from './pages/Home'
 import Register from './pages/Register'
 import Login from './pages/Login'
-import Favorites from './components/Favorites'
+import Favorites from './pages/Favorites'
 import Restaurant from './pages/Restaurant'
 import Order from './pages/Order'
 
@@ -65,7 +65,10 @@ function App() {
             path="/restaurant/:restaurantId"
             element={<Restaurant customer={customer} />}
           />
-          <Route path="favorite/:userId" element={<Favorites />} />
+          <Route
+            path="favorite/:customerId"
+            element={<Favorites customer={customer} />}
+          />
           <Route
             path="order/:customerId"
             element={<Order customer={customer} />}
