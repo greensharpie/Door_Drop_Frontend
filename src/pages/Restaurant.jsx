@@ -32,7 +32,7 @@ const Restaurant = ({customer}) => {
 
   const toggleFavorite = async () => {
     if(favOption.innerHTML === "Remove From Favorites"){
-      await axios.delete(`${BASE_URL}/customer_id/${customer.id}/restaurant_id/${restaurantId}`)
+      await axios.delete(`${BASE_URL}/favorites/customer_id/${customer.id}/restaurant_id/${restaurantId}`)
       favOption.innerHTML = 'Add To Favorites'
     } else if(favOption.innerHTML === "Add To Favorites"){
       await axios.post(`${BASE_URL}/favorites/create/customer_id/${customer.id}/restaurant_id/${restaurantId}`)
