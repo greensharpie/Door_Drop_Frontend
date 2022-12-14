@@ -28,7 +28,7 @@ const Home = ({customer, authenticated}) => {
     <div className="vstack gap-3">
       {restaurantList.map((restaurant)=> (
         <div className="res-card" key={restaurant?.id}>
-        <h2 key={restaurant?.id}>{restaurant.name}</h2>
+        {/* <h2 key={restaurant?.id}>{restaurant.name}</h2> */}
         <div>
           <img src={restaurant?.image} className="card-img-top" alt={restaurant?.name}/>
           <div className="card-body">

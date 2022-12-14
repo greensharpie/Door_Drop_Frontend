@@ -62,7 +62,7 @@ function App() {
             element={<Home customer={customer} authenticated={authenticated} />}
           />
           <Route
-            path="/customer_id/:customerId/restaurant/:restaurantId"
+            path="/restaurant/:restaurantId"
             element={<Restaurant customer={customer} />}
           />
           <Route path="favorite/:userId" element={<Favorites />} />

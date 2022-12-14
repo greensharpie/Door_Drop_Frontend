@@ -1,4 +1,4 @@
-.App {
+/* .App {
   text-align: center;
 }
 
@@ -11,7 +11,7 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
+} */
 
 /* .App-header {
   background-color: #282c34;
@@ -24,7 +24,7 @@
   color: white;
 } */
 
-.App-link {
+/* .App-link {
   color: #61dafb;
 }
 
@@ -35,12 +35,31 @@
   to {
     transform: rotate(360deg);
   }
-}
+} */
 
-.nav-background {
-  background-color: #CCD6A6;
+.container-fluid {
+  background-color: #7D8F69
 }
 
 .res-card{
   width: 18rem;
+}
+
+.res-image {
+  width: 18rem;
+}
+
+.App {
+  background-color: #7D8F69;
+}
+
+.card-title {
+  color: #285430;
+}
+.card-text {
+  color: #E6E5A3;
+}
+
+.btn-primgary {
+  color: #E6E5A3;
 }
