@@ -7,8 +7,10 @@ import { BASE_URL } from '../globals'
 const Restaurant = ({customer}) => {
 
   let {customerId, restaurantId} = useParams()
+  // let {orderId, restaurantId} = useParams()
   const [restaurant, setRestaurant] = useState([])
   const [orderId, setOrderId] = useState([])
+  // const [order, setOrder] = useState([])
 
   
   useEffect(() => {
@@ -16,17 +18,19 @@ const Restaurant = ({customer}) => {
     const GetOrdersWithItems = async () => {
       const res = await axios.get(`${BASE_URL}/restaurants/id/${restaurantId}`)
       setRestaurant(res.data)
-      console.log('test', res.data)
+      console.log('test2', res.data)
     }
     const GetOrderById = async () => {
       const res = await axios.get(`${BASE_URL}/orders/order_items/id/${customer.id}`)
-      setOrderId(res.data)
-      console.log('wow', res.data)
+      // const res = await axios.get(`${BASE_URL}/orders/order_items/id/${orderId}`)
+      // const res = await axios.get(`${BASE_URL}/customers/id/${customer.id}`)
+      setOrderId(res.data.order_items)
+      console.log('test1', res.data)
     }
     GetOrdersWithItems()
     GetOrderById()
     
-  }, [restaurantId ])
+  }, [restaurantId])
   
   const favOption = document.getElementById('addedFav')  
   
@@ -39,14 +43,11 @@ const Restaurant = ({customer}) => {
       favOption.innerHTML = "Remove From Favorites"
     }
   }
-  console.log('order', orderId)
   
   const toggleOrder = async (e, item) => {
     let itemId = e
-    console.log('item3', item)
     await axios.post(`${BASE_URL}/orders/add_order_item/order_id/${item.orderId}/restaurant_id/${restaurantId}/item_id/${item.id}`)
     alert(`${item.name} was added to your order`)
-    console.log('item1', itemId)
   }
 
   return (
@@ -68,7 +69,6 @@ const Restaurant = ({customer}) => {
         
         <div  key={item.id}>
         <div className="row">
-          {console.log('item2', item)}
   <div className="col-2">
     <nav id="navbar-example1" className="h-100 flex-column align-items-stretch pe-4 border-end">
       <nav className="nav nav-pills flex-column">
