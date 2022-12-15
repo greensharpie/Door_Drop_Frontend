@@ -30,8 +30,6 @@ const Favorite = ({customer}) => {
     const handleDelete = async (e) => {
       
       let restaurantId = e
-      // console.log(restaurantId)
-      
       await axios.delete(`${BASE_URL}/favorites/customer_id/${customerId}/restaurant_id/${restaurantId}`)
       handleRefresh();
     }
@@ -49,7 +47,7 @@ const Favorite = ({customer}) => {
                     <button onClick={() => handleDelete(restaurant.id)} className="delete-btn">Delete</button>
                   </div>
                   <Link to={`/customer_id/${customerId}/restaurant/${restaurant.id}`}> 
-                    <img src={restaurant.image} alt={restaurant.name} className="favorite-image"/>
+                    <img src={restaurant.image} alt={restaurant.name} className="rest-image"/>
                   </Link>
                 </div>
               ))}
