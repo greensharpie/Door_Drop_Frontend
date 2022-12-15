@@ -4,7 +4,11 @@ A PERN Stack food delivery platform that makes it easy to get great food from yo
 
 ## _SEI 9-19 Project 4 PERN-Stack App_
 
-### Date: Dec 08, 2022
+#### Date: Dec 08, 2022
+
+### By: Kevin Blanco
+
+#### [LinkedIn](https://www.linkedin.com/in/kevinjblanco/) | [GitHub](https://github.com/greensharpie)
 
 ### [GitHub - Backend](https://github.com/greensharpie/Door_Drop_Backend) | [Trello Board](https://trello.com/b/xrNp2Go1/door-drop#) | [Heroku App](TBD)
 
