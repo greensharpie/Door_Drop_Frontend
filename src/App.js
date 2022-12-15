@@ -12,6 +12,7 @@ import Favorites from './pages/Favorites'
 import Restaurant from './pages/Restaurant'
 import Order from './pages/Order'
 import CreateRest from './pages/CreateRest'
+import UpdateRest from './pages/UpdateRest'
 
 function App() {
   const [authenticated, toggleAuthenticated] = useState(false)
@@ -76,7 +77,11 @@ function App() {
           />
           <Route
             path="/restaurant/create"
-            element={<CreateListings customer={customer} />}
+            element={<CreateRest customer={customer} />}
+          />
+          <Route
+            path="/restaurant/update/:restaurant_id"
+            element={<UpdateRest customer={customer} />}
           />
         </Routes>
       </main>

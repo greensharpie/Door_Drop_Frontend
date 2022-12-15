@@ -107,7 +107,7 @@ const Register = () => {
     placeholder="1234 Main St, Lincolnton, NC"
     />
   </div>
-  <div className="col-6">
+  <div className="btn btn-primary col-6">
     <button 
     type="submit" 
     disabled={

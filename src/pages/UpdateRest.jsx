@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { BASE_URL } from '../globals'
-import e from 'express'
+
 
 const UpdateRest = () => {
   let navigate = useNavigate()
@@ -26,13 +26,17 @@ const UpdateRest = () => {
     UpdateRestDetails()
   }, [])
 
+  const handleChange = (e) => {
+    setFormState({...formState, [e.target.id]: e.target.value})
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     await axios.put(`${BASE_URL}/restaurants/id/${restaurant_id}`, formState)
     navigate('/')
   }
   return (
-    <div>UpdateRestDetails
+    <div>
       <div className="row justify-content-center">
     <div className="col-md-6 col-sm-12 no-padding ">
     <div className="register-form">
@@ -43,9 +47,9 @@ const UpdateRest = () => {
     onChange={handleChange}
     name = 'name'
     type="text" 
-    value={formValues?.name}
+    value={formState?.name}
     className="form-control" 
-    id="inputEmail4" 
+    id="name" 
     required
     />
   </div>
@@ -55,10 +59,10 @@ const UpdateRest = () => {
     onChange={handleChange}
     type="text"
     name="description"
-    value={formValues?.description}
+    value={formState?.description}
     required
     className="form-control" 
-    id="inputPassword4"
+    id="description"
     />
   </div>
   <div className="col-md-6">
@@ -67,9 +71,9 @@ const UpdateRest = () => {
     onChange={handleChange}
     name = 'image'
     type="text" 
-    value={formValues?.image}
+    value={formState?.image}
     className="form-control" 
-    id="inputEmail4" 
+    id="image" 
     required
     />
   </div>

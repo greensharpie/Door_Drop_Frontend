@@ -3,8 +3,11 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react' 
 import { BASE_URL } from '../globals'
+import { Link } from 'react-router-dom'
 
 const Restaurant = ({customer}) => {
+
+  const [selectedListing, setSelectedListing] = useState([])
 
   let {customerId, restaurantId} = useParams()
   // let {orderId, restaurantId} = useParams()
@@ -50,6 +53,12 @@ const Restaurant = ({customer}) => {
     alert(`${item.name} was added to your order`)
   }
 
+  const deleteListing = async (selected) => {
+    await setSelectedListing(selected.id)
+    await axios.delete(`${BASE_URL}/restaurants/id/${selected.id}`)
+    // GetOrdersWithItems()
+  }
+
   return (
     <div key={restaurant.id}>Restaurant
     <div>
@@ -60,6 +69,13 @@ const Restaurant = ({customer}) => {
       <div >
       <button onClick={toggleFavorite} id='addedFav'>Add To Favorites</button>
       <br></br>
+      <Link to={`/restaurant/update/${restaurant.id}`}>
+                <button className="zoom card-button">Update Restaurant</button>
+              </Link>
+              <button className="zoom card-button" onClick={() => deleteListing(restaurant)}>
+                Delete Restaurant
+              </button>
+              <br></br>
         <img src = {restaurant.image} alt={restaurant.image} className='rest-image'/>
       </div>
     </div>
@@ -69,9 +85,10 @@ const Restaurant = ({customer}) => {
         
         <div  key={item.id}>
         <div className="row">
-  <div className="col-2">
+  <div className="col-3">
     <nav id="navbar-example1" className="h-100 flex-column align-items-stretch pe-4 border-end">
       <nav className="nav nav-pills flex-column">
+      <img src = {item.image} alt={item.image} className='rest-image'/>
         <a className="nav-link" href="#item-1">{item.name}</a>
         <button onClick={(e) => toggleOrder(e, item)}>Add To Order</button>
       </nav>
@@ -79,7 +96,7 @@ const Restaurant = ({customer}) => {
   </div>
 
   <div className="col-4">
-    <div data-bs-spy="scroll" data-bs-target="#navbar-example1" data-bs-smooth-scroll="true" className="scrollspy-example-1" tabIndex="1">
+    <div data-bs-spy="scroll" data-bs-target="#navbar-example1" data-bs-smooth-scroll="true" className=" flex-column align-items-stretch pe-3" tabIndex="1">
       <div id="item-1">
         <h4>{item.name}</h4>
         <p>${item.price}</p>

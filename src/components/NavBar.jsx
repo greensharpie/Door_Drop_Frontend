@@ -25,8 +25,11 @@ const NavBar = ({authenticated, customer, handleLogOut}) => {
         </a>
         <ul className="dropdown-menu">
             <li><a className="dropdown-item" onClick={handleLogOut} href="/">Log Out</a></li>
-            <li className="nav-item">
+            <li className="dropdown-item">
         <a className="nav-link" href='/register'>Register</a>
+        </li>
+        <li className="dropdown-item">
+        <a className="nav-link" href='/restaurant/create'>Add New Restaurant</a>
         </li>
         </ul>
         </li>

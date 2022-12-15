@@ -49,6 +49,10 @@
   width: 18rem;
 }
 
+.item-image {
+  width: 12px;
+}
+
 .App {
   background-color: #7D8F69;
 }

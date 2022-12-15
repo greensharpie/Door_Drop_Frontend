@@ -20,12 +20,13 @@ const CreateRest = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await axios.post(`${BASE_URL}/restaurants/new_restaurant`)
+    await axios.post(`${BASE_URL}/restaurants/new_restaurant`, formState)
     setFormState(initialFormState)
     navigate('/')
   }
   return (
-    <div>CreateRest
+    <div>
+      <div></div>
       <div className="row justify-content-center">
     <div className="col-md-6 col-sm-12 no-padding ">
     <div className="register-form">
@@ -36,9 +37,9 @@ const CreateRest = () => {
     onChange={handleChange}
     name = 'name'
     type="text" 
-    value={formValues.name}
+    value={formState?.name}
     className="form-control" 
-    id="inputEmail4" 
+    id="name" 
     required
     />
   </div>
@@ -48,10 +49,10 @@ const CreateRest = () => {
     onChange={handleChange}
     type="text"
     name="description"
-    value={formValues.description}
+    value={formState?.description}
     required
     className="form-control" 
-    id="inputPassword4"
+    id="description"
     />
   </div>
   <div className="col-md-6">
@@ -60,9 +61,9 @@ const CreateRest = () => {
     onChange={handleChange}
     name = 'image'
     type="text" 
-    value={formValues.image}
+    value={formState?.image}
     className="form-control" 
-    id="inputEmail4" 
+    id="image" 
     required
     />
   </div>

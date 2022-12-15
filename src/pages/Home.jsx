@@ -41,7 +41,7 @@ const Home = ({customer, authenticated}) => {
       ))}
     </div>
   ) : (
-          <div className='not-logged-in'>
+          <div className='card-body'>
         <h3>You must be logged in!</h3>
         <button onClick={()=> navigate('/login')}>Login</button>
       </div>
