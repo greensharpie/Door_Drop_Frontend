@@ -1,11 +1,13 @@
 import React from 'react'
 import axios from 'axios'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react' 
 import { BASE_URL } from '../globals'
 import { Link } from 'react-router-dom'
 
 const Restaurant = ({customer}) => {
+
+  let navigate = useNavigate()
 
   const [selectedListing, setSelectedListing] = useState([])
 
@@ -56,7 +58,7 @@ const Restaurant = ({customer}) => {
   const deleteListing = async (selected) => {
     await setSelectedListing(selected.id)
     await axios.delete(`${BASE_URL}/restaurants/id/${selected.id}`)
-    // GetOrdersWithItems()
+    navigate('/')
   }
 
   return (
