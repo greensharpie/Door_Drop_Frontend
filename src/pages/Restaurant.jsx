@@ -60,43 +60,43 @@ const Restaurant = ({customer}) => {
   }
 
   return (
-    <div key={restaurant.id}>Restaurant
-    <div>
+    <div className='container text-center' key={restaurant.id}>
+    <div className="text-center">
+    <div className='col-md-8 col-sm-12 no-padding'>
     <h1>{restaurant?.name}</h1>
     <p>{restaurant?.description}</p>
     </div>
-    <div className='flex-column'>
-      <div >
-      <button onClick={toggleFavorite} id='addedFav'>Add To Favorites</button>
-      <br></br>
+    </div>
+    <div className='col-md-4 col-sm-12 no-padding'>
+      <div className='col-md-6 col-sm-12 no-padding'>
+      <button className="btn btn-primary col-md-6" onClick={toggleFavorite} id='addedFav'>Add To Favorites</button>
       <Link to={`/restaurant/update/${restaurant.id}`}>
-                <button className="zoom card-button">Update Restaurant</button>
+                <button className="btn btn-primary col-md-6">Update Restaurant</button>
               </Link>
-              <button className="zoom card-button" onClick={() => deleteListing(restaurant)}>
+              <button className="btn btn-primary col-md-6" onClick={() => deleteListing(restaurant)}>
                 Delete Restaurant
               </button>
-              <br></br>
         <img src = {restaurant.image} alt={restaurant.image} className='rest-image'/>
       </div>
     </div>
-    <div>
+    <div className="col-md-6 col-sm-12 no-padding">
       <h2>Menu Items</h2>
       {restaurant.restaurant_items?.map((item)=>(
         
         <div  key={item.id}>
         <div className="row">
-  <div className="col-3">
-    <nav id="navbar-example1" className="h-100 flex-column align-items-stretch pe-4 border-end">
+  <div className="col-8">
+    <nav id="navbar-example1" className="h-100 flex-column align-items-stretch pe-8 border-end">
       <nav className="nav nav-pills flex-column">
       <img src = {item.image} alt={item.image} className='rest-image'/>
         <a className="nav-link" href="#item-1">{item.name}</a>
-        <button onClick={(e) => toggleOrder(e, item)}>Add To Order</button>
+        <button className="btn btn-primary col-md-6" onClick={(e) => toggleOrder(e, item)}>Add To Order</button>
       </nav>
     </nav>
   </div>
 
   <div className="col-4">
-    <div data-bs-spy="scroll" data-bs-target="#navbar-example1" data-bs-smooth-scroll="true" className=" flex-column align-items-stretch pe-3" tabIndex="1">
+    <div data-bs-spy="scroll" data-bs-target="#navbar-example1" data-bs-smooth-scroll="true" className=" flex-column align-items-stretch pe-10" tabIndex="1">
       <div id="item-1">
         <h4>{item.name}</h4>
         <p>${item.price}</p>

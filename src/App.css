@@ -41,20 +41,27 @@
   background-color: #7D8F69
 }
 
-.res-card{
+.rest-card{
   width: 18rem;
 }
 
 .rest-image {
-  width: 18rem;
+  width: 14rem;
 }
 
-.item-image {
-  width: 12px;
-}
+/* .res-card{
+  max-width:100vmax;
+  align-items: center;
+  padding-left: 100;
+} */
+
 
 .App {
   background-color: #7D8F69;
+  /* display: inline-flex; */
+  /* justify-content: center; */
+  height: 100%;
+  width: 100%;
 }
 
 .card-title {
@@ -66,4 +73,9 @@
 
 .btn-primgary {
   color: #E6E5A3;
+}
+
+.body {
+  height: 100%;
+  width: 100%;
 }
