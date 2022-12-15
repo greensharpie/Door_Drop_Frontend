@@ -46,7 +46,7 @@ const Home = ({customer, authenticated}) => {
   <img src="https://i.imgur.com/RXFwLZe.jpg" className="card-img-top" alt="display-image"/>
   <div className="card-body">
     <h5 className="card-title">Door Drop</h5>
-    <p className="card-text">Sign in to to begin your order!</p>
+    <p className="card-text">Sign in to begin your order!</p>
     <p className="card-text"><small className="text-muted">
     <button className="btn btn-primary col-6" onClick={()=> navigate('/login')}>Login</button>
       </small></p>
