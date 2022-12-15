@@ -18,7 +18,7 @@ const UpdateRest = () => {
     setFormState({
       name: res.data.name,
       description: res.data.description,
-      image: res.data.description
+      image: res.data.image
     })
   }
 
