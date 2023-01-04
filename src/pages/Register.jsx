@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { RegisterCustomer } from '../services/Auth'
+import { BASE_URL } from '../globals'
 
 
 const Register = () => {
@@ -35,7 +36,7 @@ const Register = () => {
         password: formValues.password
       })
       setCustomerData(res.id)
-      await axios.post(`http://localhost:3001/api/orders/customer_id/${res.id}`)
+      await axios.post(`${BASE_URL}/orders/customer_id/${res.id}`)
 
       setFormValues(initialState)
       navigate('/login')
