@@ -61,21 +61,19 @@ const Login = ({toggleAuthenticated, setCustomer}) => {
   </div>
 </form>
 </div>
-<div className='new-customer'>
-            <h4>Haven't made an account? &nbsp;</h4>
-            <Link to="/register">
-              <h5>Register Here</h5>
-            </Link>
-          </div>
-          {/* Admin login */}
-          <div className='master-login' > 
-            <p>Admin Login:</p>
-            <p>Email: admin@admin.com</p>
-            <p>Password: admin</p>
-          </div>
+<div className="extra-options">
+  <div className='new-customer'>
+    <h4>Haven't made an account? &nbsp;</h4>
+    <Link to="/register">
+      <h5>Register Here</h5>
+    </Link>
+  </div>
+  <div className='master-login'> 
+    <p>Admin Login:</p>
+    <p>Email: admin@admin.com</p>
+    <p>Password: admin</p>
+  </div>
 </div>
-<div>
-
 </div>
     </div>
 

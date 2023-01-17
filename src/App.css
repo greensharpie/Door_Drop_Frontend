@@ -71,11 +71,20 @@
   color: #E6E5A3;
 }
 
-.btn-primgary {
+.btn-primary {
   color: #E6E5A3;
 }
 
 .body {
   height: 100%;
   width: 100%;
+}
+
+.login-form {
+  height: 100vh;
+}
+
+.extra-options {
+  position: absolute;
+  bottom: 10px;
 }
