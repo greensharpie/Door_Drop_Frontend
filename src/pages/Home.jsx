@@ -25,7 +25,7 @@ const Home = ({customer, authenticated}) => {
 
   return customer && authenticated ? ( 
 
-    <div className="res-card">
+    <div className="res-card" style={{margin: '0 auto'}}>
       {restaurantList.map((restaurant)=> (
         <div className="res-card" key={restaurant?.id}>
         {/* <h2 key={restaurant?.id}>{restaurant.name}</h2> */}
@@ -41,7 +41,7 @@ const Home = ({customer, authenticated}) => {
       ))}
     </div>
   ) : (
-          <div className='res-card'>
+          <div className='res-card'style={{margin: '0 auto'}}>
         <div className="card mb-3">
   <img src="https://i.imgur.com/RXFwLZe.jpg" className="card-img-top" alt="display-image"/>
   <div className="card-body">
