@@ -1,52 +1,63 @@
-.container-fluid {
-  background-color: #7D8F69
+/* <<<<<<<< HOME JSX >>>>>>>  */
+.home__container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
 }
 
-.rest-card{
-  width: 18rem;
+.home__card {
+  background: var(--color-bg-variant);
+  padding: 1.2rem;
+  border-radius: 2rem;
+  border: 1px solid transparent;
+  transition: var(--transition);
 }
 
-.rest-image {
-  width: 14rem;
+.home__card:hover {
+  border-color: var(--color-primary-variant);
+  background: transparent;
 }
 
-.res-card{
-  height: 100vh;
+.home__image {
+  margin-bottom: 1rem;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  height: auto;
+  object-fit: contain;
 }
 
-.card-body{
-  height: 100vh;
-  background-color: #7D8F69;
+.home__content {
+  margin: 2rem 0 2.6rem;
+  color: var(--color-light);
 }
 
-
-.App {
-  background-color: #7D8F69;
-  height: 100%;
-  width: 100%;
+h2 {
+  font-size: 2rem;
 }
 
-.card-title {
-  color: #285430;
-}
-.card-text {
-  color: #E6E5A3;
-}
-
-.btn-primary {
-  color: #E6E5A3;
-}
-
-.body {
-  height: 100%;
-  width: 100%;
+@media screen and (max-width: 1024px) {
+  .home__container{
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .home__content{
+    width: 80%;
+    margin: 2rem auto 4rem;
+  }
+  .home__content p {
+    margin: 1rem 0 1.5rem;
+  }
 }
 
-.login-form {
-  height: 100vh;
-}
-
-.extra-options {
-  position: absolute;
-  bottom: 10px;
+@media screen and (max-width: 600px) {
+  .home__content {
+    width: 95%;
+    margin: 0 auto 3rem;
+  }
+  .home__content {
+    text-align: center;
+  }
+  .home__content p {
+    margin: 1.5rem 0;
+  }
 }
