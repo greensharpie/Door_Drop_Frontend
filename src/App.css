@@ -4,6 +4,11 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 2.5rem;
 }
+.home__container-public {
+  display: grid;
+  grid-template-columns: repeat(autofill, minmax(3, 1fr));
+  gap: 2.5rem;
+}
 
 .home__card {
   background: var(--color-bg-variant);
@@ -25,10 +30,18 @@
   height: auto;
   object-fit: contain;
 }
+.home__image-public {
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+  overflow: hidden;
+}
 
 .home__content {
   margin: 2rem 0 2.6rem;
   color: var(--color-light);
+  display: grid;
+  align-items: center;
+  justify-content: center;
 }
 
 h2 {

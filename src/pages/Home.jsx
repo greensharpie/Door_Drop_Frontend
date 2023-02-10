@@ -43,17 +43,15 @@ const Home = ({customer, authenticated}) => {
     </section>
   ) : (
     <section id= 'home'>
-          <div className='container home__container'>
-        <div className="home__image">
-  <img src="https://i.imgur.com/RXFwLZe.jpg" alt="home"/>
+          <div className='container home__container-public'>
+        <div className="home__image-public">
+          <img src="https://i.imgur.com/RXFwLZe.jpg" alt="home"/>
+        </div>
   <div className="home__content">
     <h5>Door Drop</h5>
     <p>Sign in to begin your order!</p>
-    <p>
     <button className="btn btn-primary col-6" onClick={()=> navigate('/login')}>Login</button>
-    </p>
   </div>
-</div>
       </div>
       </section>
   )
