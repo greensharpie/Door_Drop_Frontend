@@ -28,33 +28,29 @@ const Favorite = ({customer}) => {
     }
     
     const handleDelete = async (e) => {
-      
       let restaurantId = e
       await axios.delete(`${BASE_URL}/favorites/customer_id/${customerId}/restaurant_id/${restaurantId}`)
       handleRefresh();
     }
 
     return favorite !== null ? (
-        <div className='favorite-container'>
-            <h2 >
-                Favorite restaurants
-            </h2>
-            <div>
+        <div className='container favorite__container'>
+            {/* <h2 >
+                Favorite Restaurants
+            </h2> */}
+            <div className='favorite__restaurant'>
               {favorite.customer_favorites.map((restaurant) => (
                 <div key={restaurant.id } className="favorite-data-container">
-                  <div className='res-card'> 
                     <h3>{restaurant.name}</h3>
-                    <button onClick={() => handleDelete(restaurant.id)} className="delete-btn">Delete</button>
-                  </div>
                   <Link to={`/customer_id/${customerId}/restaurant/${restaurant.id}`}> 
-                    <img src={restaurant.image} alt={restaurant.name} className="rest-image"/>
+                    <img src={restaurant.image} alt={restaurant.name} className="item__image"/>
                   </Link>
+                  <button  onClick={() => handleDelete(restaurant.id)} className="btn btn-primary">Delete</button>
                 </div>
               ))}
             </div>
         </div>
     ) : null
-    
 }
 
 export default Favorite

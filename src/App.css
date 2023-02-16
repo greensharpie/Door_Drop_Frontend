@@ -107,7 +107,6 @@ form{
 .restaurant__container{
   display: grid;
   grid-template-columns: repeat(1, 1fr);
-  /* grid-template-columns: repeat(auto-fit, minmax(70%, 1fr)); */
 }
 .restaurant__details{
   display: grid;
@@ -182,5 +181,26 @@ form{
     height: 20vh;
     width: 28vh;
 
+  }
+}
+
+/* <<<<<<<< FAVORITE JSX >>>>>>>  */
+.favorite__container {
+  display: grid;
+  grid-template-columns: 6fr 1fr;
+  justify-items: center;
+}
+
+@media screen and (max-width: 600px) {
+  .favorite__container{
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .favorite-data-container{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr; 
+    gap: 1rem;
+    justify-items:center;
+    margin: 4rem 0 4rem 0;
   }
 }
