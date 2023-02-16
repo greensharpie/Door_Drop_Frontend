@@ -62,55 +62,35 @@ const Restaurant = ({customer}) => {
   }
 
   return (
-    <div className='container text-center' key={restaurant.id}>
-    <div className="text-center">
-    <div className='col-md-8 col-sm-12 no-padding'>
-    <h1>{restaurant?.name}</h1>
-    <p>{restaurant?.description}</p>
-    </div>
-    </div>
-    <div className='col-md-4 col-sm-12 no-padding'>
-      <div className='col-md-6 col-sm-12 no-padding'>
-      <button className="btn btn-primary col-md-6" onClick={toggleFavorite} id='addedFav'>Add To Favorites</button>
-      <Link to={`/restaurant/update/${restaurant.id}`}>
-                <button className="btn btn-primary col-md-6">Update Restaurant</button>
+    <div className='container restaurant__container' key={restaurant.id}>
+      <div className="restaurant__details">
+        <h1>{restaurant?.name}</h1>
+        <p>{restaurant?.description}</p>
+        <img src = {restaurant.image} alt={restaurant.image} className='restaurant__image'/>
+      </div>
+        <div className='restaurant__cta'>
+          <button className="btn btn-primary" onClick={toggleFavorite} id='addedFav'>Add To Favorites</button>
+          <Link to={`/restaurant/update/${restaurant.id}`}>
+          <button className="btn btn-primary">Update Restaurant</button>
               </Link>
-              <button className="btn btn-primary col-md-6" onClick={() => deleteListing(restaurant)}>
-                Delete Restaurant
-              </button>
-        <img src = {restaurant.image} alt={restaurant.image} className='rest-image'/>
-      </div>
-    </div>
-    <div className="col-md-6 col-sm-12 no-padding">
-      <h2>Menu Items</h2>
-      {restaurant.restaurant_items?.map((item)=>(
+          <button className="btn btn-primary" onClick={() => deleteListing(restaurant)}>
+                Delete Restaurant</button>
+        </div>
+      <div className="menu__items">
         
+      {restaurant.restaurant_items?.map((item)=>(
         <div  key={item.id}>
-        <div className="row">
-  <div className="col-8">
-    <nav id="navbar-example1" className="h-100 flex-column align-items-stretch pe-8 border-end">
-      <nav className="nav nav-pills flex-column">
-      <img src = {item.image} alt={item.image} className='rest-image'/>
-        <a className="nav-link" href="#item-1">{item.name}</a>
-        <button className="btn btn-primary col-md-6" onClick={(e) => toggleOrder(e, item)}>Add To Order</button>
-      </nav>
-    </nav>
-  </div>
-
-  <div className="col-4">
-    <div data-bs-spy="scroll" data-bs-target="#navbar-example1" data-bs-smooth-scroll="true" className=" flex-column align-items-stretch pe-10" tabIndex="1">
-      <div id="item-1">
-        <h4>{item.name}</h4>
-        <p>${item.price}</p>
-        <p>{item.description}</p>
-      </div>
-    </div>
-  </div>
-</div>
+            <div className="item__description">
+            <img src = {item.image} alt={item.image} className='item__image'/>
+              <h4>{item.name}</h4>
+              <p>${item.price}</p>
+              <p>{item.description}</p>
+              <button className="btn btn-primary" onClick={(e) => toggleOrder(e, item)}>Add To Order</button>
+            </div>
         </div>
       ))}
     </div>
-    </div>
+  </div>
   )
 }
 
