@@ -21,12 +21,10 @@ const Login = ({toggleAuthenticated, setCustomer}) => {
     navigate('/')
   }
   return (
-    <div className="row justify-content-center">
-    <div className="col-md-6 col-sm-12 no-padding ">
+    <section id='login'>
+    <div className="container login__container">
     <div className="login-form">
-<form  onSubmit={handleSubmit}>
-      
-  <div className="col-md-6">
+<form  onSubmit={handleSubmit} className='form'>
     <label htmlFor="email" className="form-label">Email</label>
     <input 
     onChange={handleChange}
@@ -37,8 +35,6 @@ const Login = ({toggleAuthenticated, setCustomer}) => {
     id="inputEmail4" 
     required
     />
-  </div>
-  <div className="col-md-6">
     <label htmlFor="inputPassword4" className="form-label">Password</label>
     <input 
     onChange={handleChange}
@@ -49,16 +45,13 @@ const Login = ({toggleAuthenticated, setCustomer}) => {
     className="form-control" 
     id="inputPassword4"
     />
-  </div>
-  <div className="col-6">
     <button 
     type="submit" 
     disabled={
       !formValues.email ||
       !formValues.password
   }
-    className="btn btn-primary col-md-12">Login</button>
-  </div>
+    className="btn btn-primary">Login</button>
 </form>
 </div>
 <div className="extra-options">
@@ -75,7 +68,7 @@ const Login = ({toggleAuthenticated, setCustomer}) => {
   </div>
 </div>
 </div>
-    </div>
+    </section>
 
       
   )
