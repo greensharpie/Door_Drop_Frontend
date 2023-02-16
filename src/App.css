@@ -145,7 +145,7 @@ form{
 
 @media screen and (max-width: 1024px) {
   .restaurant__container{
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 1.2rem;
   }
 }
@@ -155,6 +155,12 @@ form{
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
+    justify-content: center;
+    justify-items: center;
+  }
+
+  .restaurant__details {
+    margin-right: 2rem;
   }
 
   .restaurant__container > div {
@@ -166,6 +172,15 @@ form{
 
   .restaurant__cta {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    padding: 1rem;
+    margin: 1rem;
+    gap: 1.5rem;
+  }
+
+  .restaurant__image {
+    height: 20vh;
+    width: 28vh;
+
   }
 }
